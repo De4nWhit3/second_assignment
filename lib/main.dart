@@ -3,9 +3,11 @@ import 'package:provider/provider.dart';
 import 'package:second_assignment/2_application/services/theme_service.dart';
 import 'package:second_assignment/app_theme.dart';
 
+import '2_application/pages/advice/advice.dart';
+
 void main() {
   runApp(ChangeNotifierProvider(
-    create: (_) => ThemeService(),
+    create: (context) => ThemeService(),
     child: const MyApp(),
   ));
 }
@@ -36,6 +38,7 @@ class MyApp extends StatelessWidget {
                 ),
               ],
             ),
+            body: const AdvicePageWrapperProvider(),
           ),
         );
       },
