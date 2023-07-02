@@ -28,8 +28,9 @@ class AdvicePage extends StatelessWidget {
               create: (context) => AdvisorBloc(),
               child: BlocBuilder<AdvisorBloc, AdvisorState>(
                 builder: (context, state) {
-                  print(state);
-                  if (state is AdvisorLoadingState) {
+                  if (state is AdvisorInitial) {
+                    return const Text('Initial state');
+                  } else if (state is AdvisorLoadingState) {
                     return const CircularProgressIndicator(
                       color: Colors.red,
                     );
@@ -37,9 +38,8 @@ class AdvicePage extends StatelessWidget {
                     return Text(state.advice);
                   } else if (state is AdvisorErrorState) {
                     return Text(state.error);
-                  } else {
-                    return const Placeholder();
                   }
+                  return const Placeholder();
                 },
               ),
             ),
